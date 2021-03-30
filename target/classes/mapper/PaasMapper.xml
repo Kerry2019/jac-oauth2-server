@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.definesys.portal.oauth.jacoauth2server.dao.PaasMapper" >
+
+
+    <select id="getClientByClientId" resultType="com.definesys.portal.oauth.jacoauth2server.pojo.OauthClientEO">
+        select * from oauth_client where client_id=#{clientId}
+    </select>
+
+    <select id="getConfigPage" resultType="java.lang.String">
+        select login_page from oauth_config limit 1
+    </select>
+
+</mapper>

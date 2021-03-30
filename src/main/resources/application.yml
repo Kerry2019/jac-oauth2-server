@@ -1,0 +1,43 @@
+server:
+  port: 8081
+  servlet:
+    session:
+      cookie:
+        name: OAUTH2SESSION
+spring:
+  jackson:
+    default-property-inclusion: non_null
+  datasource:
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost/oauth_portal?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+      username: root
+      password: kerry
+  application:
+    name: jac-oauth-server
+logging:
+  level:
+    org:
+      springframework:
+        security:
+          ldap: debug
+        data:
+          ldap: debug
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*Mapper.xml
+
+custom:
+  ldap:
+    security:
+      search-base: cn=Users
+      search-filter: cn={0}
+      url: ldap://localhost:389/dc=example,dc=com
+      manage-dn: cn=admin,dc=example,dc=com
+      manage-password: 123456
+    data:
+      search-base: cn=Users,dc=example,dc=com
+      url: ldap://localhost:389
+      manage-dn: cn=admin,dc=example,dc=com
+      manage-password: 123456
